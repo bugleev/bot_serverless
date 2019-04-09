@@ -1,0 +1,22 @@
+service: buybots-lambda
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  region: eu-north-1
+  iamRoleStatements: 
+    - Effect: Allow
+      Action:
+        - ssm:GetParameters
+      Resource: "arn:aws:ssm:eu-north-1:263451985759:parameter/*"
+  
+functions:
+  botResponse:
+    handler: handler.botResponse
+    events:
+      - http:
+          path: botPath
+          method: post
+
+plugins:
+  - serverless-offline
