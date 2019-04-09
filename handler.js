@@ -18,7 +18,7 @@ const respond = payload => {
     statusCode: 200,
     body: JSON.stringify({ payload }),
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json;charset=UTF-8"
     }
   }
 }
