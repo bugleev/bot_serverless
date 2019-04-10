@@ -1,6 +1,6 @@
 const { axios, yandex_API } = require("./utils")
 const yandexData = require('./db/yandex.json')
-const responseGenerator = require('./BotResponse')
+const responseGenerator = require('./bots/Response')
 
 
 module.exports.botResponse = async (event) => {

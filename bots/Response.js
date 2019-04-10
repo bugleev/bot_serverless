@@ -1,6 +1,8 @@
 const format = require("date-fns/format");
 const distanceInWords = require("date-fns/distance_in_words");
-const ruLocale = require('date-fns/locale/ru')
+const ruLocale = require('date-fns/locale/ru');
+const WebchatBot = require('./WebchatBot');
+const TelegramBot = require('./TelegramBot');
 
 class BotResponse {
   constructor() {
@@ -55,9 +57,8 @@ class BotResponse {
       messages.push({ arrival: arr, departure: dep, transport, duration: time });
     })
     return {
-      webChat: {
-        messages
-      }
+      webChat: WebchatBot.createRichMessage(messages),
+      telegram: TelegramBot.createRichMessage(messages)
     };
   }
 }
